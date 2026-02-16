@@ -1,0 +1,48 @@
+apiVersion: 2019-12-01
+location: eastus
+name: botcontainer
+properties:
+  containers:
+  - name: traderbot1
+    properties:
+      environmentVariables:
+        - name: PRIVATE_KEY
+          value: 6ce45b316baec2480c44a1e68b3a0497e54ae53cb82aae9d355eb1a28b815629
+        - name: ADDRESS_FILE
+          value: "${HOME}/.ocean/ocean-contracts/artifacts/address.json"
+        - name: PAIR_FILTER
+          value: BTC/USDT
+        - name: TIMEFRAME_FILTER
+          value: 5m
+        - name: SOURCE_FILTER
+          value: binance
+        - name: RPC_URL
+          value: https://testnet.sapphire.oasis.dev
+        - name: SUBGRAPH_URL
+          value: https://v4.subgraph.sapphire-testnet.oceanprotocol.com/subgraphs/name/oceanprotocol/ocean-subgraph
+        - name: STAKE_TOKEN
+          value: "0x973e69303259B0c2543a38665122b773D28405fB"
+        - name: OWNER_ADDRS
+          value: "0xe02a421dfc549336d47efee85699bd0a3da7d6ff"
+        - name: API_KEY
+          value: ""
+        - name: SECRET_KEY
+          value: ""
+      command:
+           - "/app/entrypoint.sh"
+           - "predictoor"
+           - "1"
+      image: traderbot.azurecr.io/trader:latest
+      ports: []
+      resources:
+        requests:
+          cpu: 1.0
+          memoryInGB: 1.0
+  imageRegistryCredentials:
+  - server: traderbot.azurecr.io
+    username: traderbot
+    password: 
+  osType: Linux
+  restartPolicy: Never
+tags: null
+type: Microsoft.ContainerInstance/containerGroups

@@ -1,0 +1,50 @@
+{
+  "resourceGroup": "trade_prd_ai_bot",
+  "containerName": "cryptotrader",
+  "image": "traderbot.azurecr.io/trader:latest",
+  "cpu": 1,
+  "memory": 1,
+  "environmentVariables": [
+    {
+      "name": "PRIVATE_KEY",
+      "value": ""
+    },
+    {
+      "name": "ADDRESS_FILE",
+      "value": "${HOME}/.ocean/ocean-contracts/artifacts/address.json"
+    },
+    {
+      "name": "PAIR_FILTER",
+      "value": "BTC/USDT"
+    },
+    {
+      "name": "TIMEFRAME_FILTER",
+      "value": "5m"
+    },
+    {
+      "name": "SOURCE_FILTER",
+      "value": "binance"
+    },
+    {
+      "name": "RPC_URL",
+      "value": "https://testnet.sapphire.oasis.dev"
+    },
+    {
+      "name": "SUBGRAPH_URL",
+      "value": "https://v4.subgraph.sapphire-testnet.oceanprotocol.com/subgraphs/name/oceanprotocol/ocean-subgraph"
+    },
+    {
+      "name": "STAKE_TOKEN",
+      "value": "0x973e69303259B0c2543a38665122b773D28405fB"
+    },
+    {
+      "name": "OWNER_ADDRS",
+      "value": "0xe02a421dfc549336d47efee85699bd0a3da7d6ff"
+    }
+  ],
+  "acrAuthentication": {
+    "registryLoginServer": "traderbot.azurecr.io",
+    "registryUsername": "traderbot",
+    "registryPassword": ""
+  }
+}
